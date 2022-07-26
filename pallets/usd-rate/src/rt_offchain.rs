@@ -1,4 +1,4 @@
-/** Module name: vtb_offchain
+/** Module name: rt_offchain
  *Description: It has code implementation with offchain worker to get and post http request
  *Methods: fetch_n_parse_get_request, fetch_from_remote_get_request, fetch_n_parse_post_request, fetch_from_remote_post_request
  *Method: fetch_eos_current_block_number - to get current block number from ethereum network

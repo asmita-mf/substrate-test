@@ -36,39 +36,24 @@ pub mod pallet {
 	impl<T: Config> Hooks<BlockNumberFor<T>> for Pallet<T> {
 		/// Offchain Worker entry point.
 		fn on_initialize(n: T::BlockNumber) -> u64{
-			if n == 1_u32.into() {
-			// 	origin: OriginFor<T>,
-			// when: T::BlockNumber,
-			// maybe_periodic: Option<schedule::Period<T::BlockNumber>>,
-			// priority: schedule::Priority,
-			// call: Box<CallOrHashOf<T>>,
-			    let accountId: T::AccountId = AccountId32::from("5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY");
-				<pallet_scheduler::Pallet<T>>::schedule(
-					RawOrigin::Signed(accountId).into(), //OriginFor::<accountId>,
-					n+20_u32.into(),
-					None,
-					1_u8.into(),
-					Call::do_something{something: 10}.into()
-				);
-			}
+			// if n == 1_u32.into() {
+			// // 	origin: OriginFor<T>,
+			// // when: T::BlockNumber,
+			// // maybe_periodic: Option<schedule::Period<T::BlockNumber>>,
+			// // priority: schedule::Priority,
+			// // call: Box<CallOrHashOf<T>>,
+			//     let accountId: T::AccountId = AccountId32::from("5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY");
+			// 	<pallet_scheduler::Pallet<T>>::schedule(
+			// 		RawOrigin::Signed(accountId).into(), //OriginFor::<accountId>,
+			// 		n+20_u32.into(),
+			// 		None,
+			// 		1_u8.into(),
+			// 		Call::do_something{something: 10}.into()
+			// 	);
+			// }
 
 			0
 		}
-		// fn offchain_worker(block_number: T::BlockNumber) {
-		
-	// 	// 	log::info!("Hello from offchain workers of usd-rate pallet!");
-
-	// 	// 	for cryptos in UsdRateTokenType::_iterator() {
-	// 	// 		match Self::fetch_and_store_cryptos_usd_rate(block_number, b"eth-usd-rate-last-send", cryptos) {
-	// 	// 			Ok(usd_value) => {	
-	// 	// 				let _ = Self::submit_cryptos_usd_rate_value(*cryptos ,usd_value);
-	// 	// 			}
-	// 	// 			Err(err) => {
-	// 	// 				log::debug!("Warning: {:?} ", err);
-	// 	// 			}
-	// 	// 		}
-	// 	// 	}
-	// 	// }
 	}
 
 	#[pallet::pallet]

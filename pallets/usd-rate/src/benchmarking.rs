@@ -20,16 +20,14 @@ benchmarks! {
        let usd_rate =  custom_types::UsdRate {
             eth: U256::default(),
             eos: U256::from(0_u8),
-            vtbc_current_price: U256::from(0_u8),
-            vtbc_start_price: U256::from(0_u8),
-            vtbc_last_apr_rate: U256::from(0_u8),
+            btc: U256::from(0_u8),
         };
         assert_event::<T>(Event::InitializedusdRateSuccess (Some(caller),custom_types::UsdRateTokenType::Eth, usd_rate ).into());
 	}
 }
 
 // Compile cli code: cargo build --release --features runtime-benchmarks
-//   ./target/release/vtb-node benchmark pallet --pallet pallet_usd_rate --extrinsic "*" --steps=50 --repeat=20 --execution=wasm --wasm-execution=compiled --heap-pages=4096 --output=pallets/usd-rate/src/weights1.rs 
+//   ./target/release/node-template benchmark pallet --pallet pallet_usd_rate --extrinsic "*" --steps=50 --repeat=20 --execution=wasm --wasm-execution=compiled --heap-pages=4096 --output=pallets/usd-rate/src/weights1.rs 
 
 // 
 

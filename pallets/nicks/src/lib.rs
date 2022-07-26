@@ -70,8 +70,6 @@ pub enum StorageVersionEnum {
 pub enum TokenType {
 	EOS,
 	ETH,
-	VTBC,
-	VTBT
 }
 
 #[frame_support::pallet]

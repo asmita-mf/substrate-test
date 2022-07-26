@@ -6,7 +6,7 @@
 //! EXECUTION: None, WASM-EXECUTION: Compiled, CHAIN: None, DB CACHE: 1024
 
 // Executed Command:
-// ./target/release/vtb-node
+// ./target/release/node-template
 // benchmark
 // pallet
 // --pallet

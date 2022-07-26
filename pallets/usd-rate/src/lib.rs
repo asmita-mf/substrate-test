@@ -22,7 +22,7 @@ use primitive_types::U256;
 use sp_std::{prelude::*, str, convert::TryInto};
 mod custom_types;
 use custom_types::UsdRateTokenType;
-mod vtb_offchain;
+mod rt_offchain;
 pub mod crypto;
 // #[path = "../../../global_constants.rs"] mod global_constants;
 
@@ -147,21 +147,12 @@ pub mod pallet {
 	/// Store of EthUsdRate when new rate request is accepted.
 	#[pallet::storage]
 	#[pallet::getter(fn get_usd_rate)]
-	pub type UsdRate<T> = StorageValue<_, custom_types::UsdRate, ValueQuery>; //usd rate of eth, eos, vtbc
+	pub type UsdRate<T> = StorageValue<_, custom_types::UsdRate, ValueQuery>; //usd rate of eth, eos, btc
 
 	#[pallet::storage]
 	#[pallet::getter( fn get_circulation_value)]
 	pub(super) type Circulation<T> = StorageMap<_, Blake2_128Concat, UsdRateTokenType, U256, ValueQuery>;
 
-	// #[pallet::storage]
-	// #[pallet::getter(fn order_book_nmap)]
-	// pub(super) type OrderBookNMap <T: Config> = StorageNMap<
-	// 	Key = (NMapKey<Blake2_128Concat, TradeType>,
-	// 	NMapKey<Blake2_128Concat, TokenType>,
-	// 	NMapKey<Twox64Concat, U256>),
-	// 	Value = u64,
-	// 	QueryKind = OptionQuery,
-	// >;
 }
 
 impl<T: SigningTypes> SignedPayload<T> for custom_types::PricePayload<T::Public, T::BlockNumber> {
@@ -188,9 +179,9 @@ impl<T: Config> Pallet<T> {
 					get_usd_rate.eos = rate;
 				});
 			},
-			UsdRateTokenType::Vtbc => {
+			UsdRateTokenType::Btc => {
 				UsdRate::<T>::mutate(|get_usd_rate| {
-					get_usd_rate.vtbc_current_price = rate; 
+					get_usd_rate.btc = rate; 
 				});
 			},
 			_ => {log::debug!("none type");}

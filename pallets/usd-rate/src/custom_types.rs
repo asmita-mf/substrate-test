@@ -25,22 +25,20 @@ pub struct Payload<Public> {
 pub struct UsdRate {
 	pub eth: U256,
 	pub eos: U256,
-	pub vtbc_current_price: U256,
-	pub vtbc_start_price: U256,
-	pub vtbc_last_apr_rate: U256,
+	pub btc: U256,
 }
 
 #[derive( Encode, Decode, Clone, Copy, PartialEq, Eq, RuntimeDebug, scale_info::TypeInfo, MaxEncodedLen)]
 pub enum UsdRateTokenType {
 	Eos,
 	Eth,
-	Vtbc,
+	Btc,
 	None
 }
 
 impl UsdRateTokenType {
     pub fn _iterator() -> Iter<'static, UsdRateTokenType> {
-        static _TOKENTYPES: [UsdRateTokenType; 3] = [UsdRateTokenType::Eos, UsdRateTokenType::Eth, UsdRateTokenType::Vtbc];
+        static _TOKENTYPES: [UsdRateTokenType; 3] = [UsdRateTokenType::Eos, UsdRateTokenType::Eth, UsdRateTokenType::Btc];
         _TOKENTYPES.iter()
     }
 }
