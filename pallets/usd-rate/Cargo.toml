@@ -1,0 +1,101 @@
+[package]
+name = "pallet-usd-rate"
+version = "1.0.0"
+authors = ["Demo"]
+edition = "2021"
+license = "Unlicense"
+homepage = "https://github.com/demo"
+repository = "https://github.com/demo/tree/develop/node-template/pallets/usd-rate"
+description = "Pallet which keeps record of current USD rate of Crypto"
+readme = "README.md"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+serde_derive = "0.9"
+scale-info = { version = "2.0.1", default-features = false, features = ["derive"] }
+serde_json = { version = '1.0.45', default-features = false, features = ['alloc'] }
+serde = { version = '1.0.100', default-features = false, features = ['derive'] }
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false }
+sp-application-crypto = { git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.24", default-features = false  }
+
+[dependencies.primitive-types]
+default-features = false
+version = "0.11.1"
+features = ["serde_no_std", "codec"]
+
+[dependencies.lite-json]
+default-features = false
+version = "0.1"
+
+[dependencies.log]
+default-features = false
+version = '0.4.14'
+
+[dependencies.frame-support]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '4.0.0-dev'
+
+[dependencies.frame-system]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '4.0.0-dev'
+
+[dependencies.sp-std]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '4.0.0-dev'
+
+[dependencies.sp-core]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '6.0.0'
+
+[dependencies.sp-io]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '6.0.0'
+
+[dependencies.sp-runtime]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '6.0.0'
+
+[dependencies.frame-benchmarking]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = "polkadot-v0.9.24"
+version = '4.0.0-dev'
+optional = true
+
+[dev-dependencies]
+pallet-balances = { git = "https://github.com/paritytech/substrate.git", branch = "polkadot-v0.9.24" }
+#ocw-primitives = { default-features = false, path = "../../primitives" }
+
+[features]
+default = ["std"]
+runtime-benchmarks = ['frame-benchmarking']
+std = [
+	"codec/std",
+	"scale-info/std",
+	"frame-support/std",
+	"frame-system/std",
+	"lite-json/std",
+	"sp-core/std",
+	"sp-io/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"log/std",
+	"serde/derive",
+	'frame-benchmarking/std',
+	'sp-application-crypto/std'
+]
+try-runtime = ["frame-support/try-runtime"]
